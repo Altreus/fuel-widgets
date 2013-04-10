@@ -79,7 +79,7 @@ class Widget extends \ViewModel
 	 */
 	public function handle_get($data)
 	{
-		return true;
+		return false;
 	}
 
 	/**
@@ -95,7 +95,7 @@ class Widget extends \ViewModel
 
     public function handle_post($data)
     {
-		return true;
+		return false;
 	}
 
 	/**
