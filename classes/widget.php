@@ -55,6 +55,8 @@ class Widget extends \ViewModel
 		{
 			parent::set($key, $value[0], $value[1]);
 		}
+
+		parent::set('errors', $this->_errors);
 	}
 
 	/**
