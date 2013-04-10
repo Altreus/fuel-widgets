@@ -11,12 +11,12 @@ by default it creates a single view with all the widgets in and outputs it as th
 
 There are three ways to define widgets for this controller:
 
-1. The string name of the widget type. See Widgets below
-2. A Widget object you constructed yourself
-3. Any object, within limitations - see below
+1. A Widget object you constructed yourself
+2. A View object
+3. Any object, within limitations - see below about GETs and POSTs
 
-The string name will be converted to a Widget object via the `forge()` method, in the standard Fuel
-paradigm. Objects will be left intact; it is up to you to provide objects that will work.
+Using strings was originally going to be supported, but PHP will not let me override ViewModel's
+forge method. So I can't. Plus it made no sense.
 
 ## Creating widgeted actions
 
@@ -84,10 +84,6 @@ as a widget:
 Widget is not abstract because it is possible (albeit of limited use) to create a get-only widget.
 In this case it will follow the normal behaviour of ViewModel, which is to look for a view by the
 defined name of the widget.
-
-Since this is the default behaviour of `forge()`, it is advisable to double-check your spelling when
-adding string names to the widgets list. That said, it is probably even more sensible simply to add
-Widget objects to the list in the first place.
 
 ### Extending Widget
 
