@@ -41,7 +41,7 @@ class Controller_Widget extends \Controller_Template
                     // If we've posted a widget, we should perform the GET redirect as is usual
                     if ($widget->handle_post(\Input::post()) and ! $widget->errors())
                     {
-                        \Response::redirect(\Uri::string());
+                        \Response::redirect(\Request::main()->uri);
                     }
 
                     // With errors we simply let the page render as usual, assuming the widget handles
