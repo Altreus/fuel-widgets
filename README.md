@@ -86,6 +86,25 @@ Widget is not abstract because it is possible (albeit of limited use) to create 
 In this case it will follow the normal behaviour of ViewModel, which is to look for a view by the
 defined name of the widget.
 
+### Differences from ViewModel
+
+Widgets are designed to be adaptive, which means they may need to react to changes after
+construction. The ViewModel class sends data straight to the View that it contains; this means that
+if you later change the underlying View you have to reset all the data.
+
+The Widget class therefore holds an array of data and applies it to the View in the `after()`
+method. This means you can change the underlying View at any time without altering the data you've
+already provided to the Widget.
+
+The following methods are overridden:
+
+* `set($key, $value, $filter)` - Stores the $value and $filter against $key in the data array
+* `get($key, $default)` - Retrieves the value stored against $key, or returns $default
+* `after()` - Bypasses the new `set()` and calls the parent version for all items in the data array
+
+Of particular interest is `after()`, which is by default empty in ViewModel; now it becomes
+necessary to call the parent one.
+
 ### Extending Widget
 
 The base constructor accepts the type of widget. Feel free to omit this from your constructor, but

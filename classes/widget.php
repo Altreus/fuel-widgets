@@ -6,6 +6,34 @@ class Widget extends \ViewModel
 {
     protected $_type;
 
+	protected $_data = [];
+
+	public function & get($key = null, $default = null)
+	{
+		if (isset($this->_data[$key]))
+		{
+			return $this->_data[$key][0];
+		}
+		return $default;
+	}
+
+	public function set($key, $value, $filter = null)
+	{
+		is_null($filter) and $filter = $this->_auto_filter;
+
+		$this->_data[$key] = [$value, $filter];
+
+		return $this;
+	}
+
+	public function after()
+	{
+		foreach ($this->_data as $key => $value)
+		{
+			parent::set($key, $value[0], $value[1]);
+		}
+	}
+
     public function __construct($type)
     {
         $this->_type = $type;
