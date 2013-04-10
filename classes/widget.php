@@ -14,8 +14,15 @@ class Widget extends \ViewModel
         parent::__construct('view', null, "widgets/$type");
     }
 
-    public function post($data)
-    { }
+	public function handle_get($data)
+	{
+		return true;
+	}
+
+    public function handle_post($data)
+    {
+		return true;
+	}
 
     public function errors()
     {

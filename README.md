@@ -53,7 +53,7 @@ itself. This is the standard way of ensuring the same page is rendered on error.
 For a widget to support POST in this manner it must:
 
 1. Extend Widget; or
-2. Support `type()`, `post()` and `errors()` methods
+2. Support `type()`, `handle_get()`, `handle_post()` and `errors()` methods
 
 Furthermore, the form in the widget must send as part of the POST body a value by the key of
 `widget`. This identifies the type of the widget being posted to.
@@ -77,7 +77,8 @@ be output to the page, and is assumed to have rendered its own problems with it.
 The Widget class is an extension of the ViewModel class. It adds some extra methods required to work
 as a widget:
 
-* `post($data)` - Accepts post data and handles it in any way necessary.
+* `handle_get($data)` - Give the widget an opportunity to handle GET data or register assets
+* `handle_post($data)` - Accepts post data and handles it in any way necessary. Returns true if handled
 * `errors()` - Needs only return whether there were any errors during `post()`
 * `type()` - Returns the type of the widget, which should match the value of the `widget` POST parameter
 

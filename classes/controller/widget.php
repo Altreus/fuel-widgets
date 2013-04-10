@@ -39,7 +39,7 @@ class Controller_Widget extends \Controller_Template
                 if ($is_post and $posted_for and $posted_for == $widget->type())
                 {
                     // If we've posted a widget, we should perform the GET redirect as is usual
-                    if ($widget->post(\Input::post()) and ! $widget->errors())
+                    if ($widget->handle_post(\Input::post()) and ! $widget->errors())
                     {
                         \Response::redirect(\Uri::string());
                     }
@@ -47,6 +47,7 @@ class Controller_Widget extends \Controller_Template
                     // With errors we simply let the page render as usual, assuming the widget handles
                     // its own error conditions.
                 }
+				$widget->handle_get(\Input::get());
             }
 
             $view = \View::forge('widgets');
