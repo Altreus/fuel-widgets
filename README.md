@@ -27,9 +27,9 @@ rules.
 Widgets defined thus will be put into a view, which will itself be put into the `content` part of
 your template.
 
-If your template requires or supports multiple areas of content you can also make this a 2D array,
-and have `$this->widgets` be an associative array whose keys will become the variables in your
-template. Thus adding to `$this->widgets` is equivalent to adding to `$this->widgets['content']`.
+If your template requires or supports multiple areas of content you can also make this an
+associative array whose keys will become the variables in your template. Thus adding to
+`$this->widgets` is equivalent to adding to `$this->widgets['content']`.
 
 Widgets will be output in the order they are added.
 
