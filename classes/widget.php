@@ -9,9 +9,10 @@ class Widget extends \ViewModel
     public function __construct($type)
     {
         $this->_type = $type;
-        $this->set('widget_type', $this->_type);
 
         parent::__construct('view', null, "widgets/$type");
+
+        $this->set('widget_type', $this->_type);
     }
 
 	public function handle_get($data)
