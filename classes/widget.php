@@ -5,6 +5,7 @@ namespace Widgets;
 class Widget extends \ViewModel
 {
     protected $_type;
+	protected $_errors = [];
 
 	protected $_data = [];
 
@@ -107,7 +108,7 @@ class Widget extends \ViewModel
 	 */
     public function errors()
     {
-        return false;
+        return $this->_errors;
     }
 
 	/**
