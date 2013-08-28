@@ -35,7 +35,7 @@ class Widget extends \ViewModel
 	 * @param	$filter	bool	Optional. Define whether to filter this value when it is later set on the view.
 	 * @return	$this
 	 */
-	public function set($key, $value, $filter = null)
+	public function set($key, $value = null, $filter = null)
 	{
 		is_null($filter) and $filter = $this->_auto_filter;
 
